@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+  cursor: pointer;
+  flex-wrap: nowrap;
+
+  gap: var(--size-4);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-2);
+  padding: var(--size-4);
+  background-color: var(--surface-2);
+  font-size: var(--font-size-fluid-1);
+  font-weight: var(--font-weight-9);
+}
+
+.wrapper:hover {
+  box-shadow: var(--shadow-3);
+}
+
+.pfp {
+      object-fit: cover;
+      border-radius: 50%;
+      height: var(--font-size-fluid-3);
+      width: var(--font-size-fluid-3);
+}

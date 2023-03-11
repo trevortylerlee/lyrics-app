@@ -1,0 +1,484 @@
+{
+  "artists": [
+    {
+      "name": "The Beatles",
+      "id": 160
+    },
+    {
+      "name": "Elvis Presley",
+      "id": 702
+    },
+    {
+      "name": "Michael Jackson",
+      "id": 295
+    },
+    {
+      "name": "Elton John",
+      "id": 136
+    },
+    {
+      "name": "Queen",
+      "id": 118
+    },
+    {
+      "name": "Madonna",
+      "id": 67
+    },
+    {
+      "name": "Led Zeppelin",
+      "id": 226
+    },
+    {
+      "name": "Rihanna",
+      "id": 33491890
+    },
+    {
+      "name": "Pink Floyd",
+      "id": 117
+    },
+    {
+      "name": "Eminem",
+      "id": 426
+    },
+    {
+      "name": "Mariah Carey",
+      "id": 72
+    },
+    {
+      "name": "Taylor Swift",
+      "id": 259675
+    },
+    {
+      "name": "Beyonce",
+      "id": 18927
+    },
+    {
+      "name": "Whitney Houston",
+      "id": 444
+    },
+    {
+      "name": "Eagles",
+      "id": 7157
+    },
+    {
+      "name": "Celine Dion",
+      "id": 86
+    },
+    {
+      "name": "AC/DC",
+      "id": 626
+    },
+    {
+      "name": "The Rolling Stones",
+      "id": 383
+    },
+    {
+      "name": "Drake",
+      "id": 51614128
+    },
+    {
+      "name": "Garth Brooks",
+      "id": 24503249
+    },
+    {
+      "name": "Kanye West",
+      "id": 33091467
+    },
+    {
+      "name": "Billy Joel",
+      "id": 85
+    },
+    {
+      "name": "Justin Bieber",
+      "id": 33491916
+    },
+    {
+      "name": "Ed Sheeran",
+      "id": 49581672
+    },
+    {
+      "name": "Bruno Mars",
+      "id": 33492237
+    },
+    {
+      "name": "Bruce Springsteen",
+      "id": 373
+    },
+    {
+      "name": "U2",
+      "id": 121
+    },
+    {
+      "name": "Aerosmith",
+      "id": 268
+    },
+    {
+      "name": "Phil Collins",
+      "id": 42004219
+    },
+    {
+      "name": "Barbra Streisand",
+      "id": 448
+    },
+    {
+      "name": "ABBA",
+      "id": 402
+    },
+    {
+      "name": "Frank Sinatra",
+      "id": 69
+    },
+    {
+      "name": "Katy Perry",
+      "id": 190034
+    },
+    {
+      "name": "Chris Brown",
+      "id": 33490897
+    },
+    {
+      "name": "Jay-Z",
+      "id": 33091963
+    },
+    {
+      "name": "Metallica",
+      "id": 64
+    },
+    {
+      "name": "Lady Gaga",
+      "id": 378462
+    },
+    {
+      "name": "Lil Wayne",
+      "id": 23619
+    },
+    {
+      "name": "Maroon 5",
+      "id": 27840
+    },
+    {
+      "name": "Adele",
+      "id": 346898
+    },
+    {
+      "name": "Red Hot Chili Peppers",
+      "id": 7521
+    },
+    {
+      "name": "Fleetwood Mac",
+      "id": 158
+    },
+    {
+      "name": "Bon Jovi",
+      "id": 7704
+    },
+    {
+      "name": "Rod Stewart",
+      "id": 2517
+    },
+    {
+      "name": "Bee Gees",
+      "id": 452
+    },
+    {
+      "name": "Nicki Minaj",
+      "id": 33492007
+    },
+    {
+      "name": "Coldplay",
+      "id": 1039
+    },
+    {
+      "name": "Linkin Park",
+      "id": 7132
+    },
+    {
+      "name": "George Strait",
+      "id": 745
+    },
+    {
+      "name": "P!nk",
+      "id": 6677
+    },
+    {
+      "name": "Britney Spears",
+      "id": 33491420
+    },
+    {
+      "name": "Shania Twain",
+      "id": 441
+    },
+    {
+      "name": "Guns N' Roses",
+      "id": 14326951
+    },
+    {
+      "name": "Backstreet Boys",
+      "id": 271
+    },
+    {
+      "name": "Eric Clapton",
+      "id": 424
+    },
+    {
+      "name": "Neil Diamond",
+      "id": 1362
+    },
+    {
+      "name": "Prince",
+      "id": 92
+    },
+    {
+      "name": "Journey",
+      "id": 765
+    },
+    {
+      "name": "Paul McCartney",
+      "id": 33490869
+    },
+    {
+      "name": "Janet Jackson",
+      "id": 90
+    },
+    {
+      "name": "Kenny Rogers",
+      "id": 529
+    },
+    {
+      "name": "Santana",
+      "id": 85359
+    },
+    {
+      "name": "Simon & Garfunkel",
+      "id": 80
+    },
+    {
+      "name": "George Michael",
+      "id": 88
+    },
+    {
+      "name": "Julio Iglesias",
+      "id": 8330
+    },
+    {
+      "name": "Dire Straits",
+      "id": 134
+    },
+    {
+      "name": "The Doors",
+      "id": 815
+    },
+    {
+      "name": "Foreigner",
+      "id": 650
+    },
+    {
+      "name": "Chicago",
+      "id": 1292
+    },
+    {
+      "name": "Bob Dylan",
+      "id": 13
+    },
+    {
+      "name": "The Carpenters",
+      "id": 24821606
+    },
+    {
+      "name": "Meat Loaf",
+      "id": 6391
+    },
+    {
+      "name": "Earth, Wind & Fire",
+      "id": 35448554
+    },
+    {
+      "name": "Cher",
+      "id": 166
+    },
+    {
+      "name": "Def Leppard",
+      "id": 145
+    },
+    {
+      "name": "David Bowie",
+      "id": 431
+    },
+    {
+      "name": "Genesis",
+      "id": 679
+    },
+    {
+      "name": "Stevie Wonder",
+      "id": 22
+    },
+    {
+      "name": "James Taylor",
+      "id": 79
+    },
+    {
+      "name": "Tina Turner",
+      "id": 733
+    },
+    {
+      "name": "Olivia Newton-John",
+      "id": 51810479
+    },
+    {
+      "name": "Linda Ronstadt",
+      "id": 756
+    },
+    {
+      "name": "The Beach Boys",
+      "id": 542
+    },
+    {
+      "name": "Donna Summer",
+      "id": 360
+    },
+    {
+      "name": "Alicia Keys",
+      "id": 9378
+    },
+    {
+      "name": "Christina Aguilera",
+      "id": 40960030
+    },
+    {
+      "name": "Lionel Richie",
+      "id": 7058
+    },
+    {
+      "name": "Johnny Cash",
+      "id": 225
+    },
+    {
+      "name": "Justin Timberlake",
+      "id": 22681
+    },
+    {
+      "name": "Ariana Grande",
+      "id": 13958599
+    },
+    {
+      "name": "R.E.M.",
+      "id": 6882
+    },
+    {
+      "name": "Post Malone",
+      "id": 51049836
+    },
+    {
+      "name": "Flo Rida",
+      "id": 33091402
+    },
+    {
+      "name": "Shakira",
+      "id": 33091389
+    },
+    {
+      "name": "Usher",
+      "id": 33492008
+    },
+    {
+      "name": "Tim McGraw",
+      "id": 8678
+    },
+    {
+      "name": "The Black-Eyed Peas",
+      "id": 7014
+    },
+    {
+      "name": "Van Halen",
+      "id": 356
+    },
+    {
+      "name": "Ayumi Hamasaki",
+      "id": 6943
+    },
+    {
+      "name": "Tom Petty",
+      "id": 120
+    },
+    {
+      "name": "Johnny Hallyday",
+      "id": 14946
+    },
+    {
+      "name": "The Weeknd",
+      "id": 13937035
+    },
+    {
+      "name": "Imagine Dragons",
+      "id": 13895270
+    },
+    {
+      "name": "Luke Bryan",
+      "id": 360257
+    },
+    {
+      "name": "Tupac Shakur",
+      "id": 24539824
+    },
+    {
+      "name": "Alabama",
+      "id": 6470
+    },
+    {
+      "name": "R.Kelly",
+      "id": 33492091
+    },
+    {
+      "name": "Nirvana",
+      "id": 43
+    },
+    {
+      "name": "Robbie Williams",
+      "id": 1375
+    },
+    {
+      "name": "Bob Seger",
+      "id": 6463
+    },
+    {
+      "name": "Kenny G",
+      "id": 6563
+    },
+    {
+      "name": "Green Day",
+      "id": 290
+    },
+    {
+      "name": "Enya",
+      "id": 60
+    },
+    {
+      "name": "Bryan Adams",
+      "id": 95
+    },
+    {
+      "name": "Bob Marley",
+      "id": 140038
+    },
+    {
+      "name": "The Police",
+      "id": 380
+    },
+    {
+      "name": "Gloria Estefan",
+      "id": 89
+    },
+    {
+      "name": "Barry Manilow",
+      "id": 6779
+    },
+    {
+      "name": "Kiss",
+      "id": 13949139
+    },
+    {
+      "name": "Aretha Franklin",
+      "id": 41055280
+    }
+  ]
+}
