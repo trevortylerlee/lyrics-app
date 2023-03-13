@@ -71,7 +71,9 @@ export default function Home() {
             console.log(artist_name, artist_id)
 
             return (
-              <Link href={`/${artist_id}`} key={artist_id}>{artist_name}</Link>
+              <div key={artist_id} style={{'--_delay': index}} className={styles.searchResult}>
+                <Link href={`/${artist_id}`} key={artist_id}>{artist_name}</Link>
+              </div>
             )
           }
           )}
@@ -86,9 +88,9 @@ export default function Home() {
           const { name, id } = artist
 
           return (
-            <React.Fragment key={id}>
+            <div key={id} style={{'--_delay': index}} className={styles.artistWrapper}>
               <ArtistCard artist={name} id={id} />
-            </React.Fragment>
+            </div>
           )
         }
         )}
@@ -104,7 +106,8 @@ function SearchBar({search, setSearch, searchArtists}) {
 
   return (
     <div className={styles.searchbar}>
-      <input className={styles.input} type="text" placeholder="Example: Taylor Swift" onChange={e => {
+    <form>
+      <input className={styles.input} type="text" required placeholder="Example: Taylor Swift" onChange={e => {
         const nextInput = e.target.value
         setInput(nextInput)
       }}/>
@@ -117,6 +120,7 @@ function SearchBar({search, setSearch, searchArtists}) {
         searchArtists(nextSearch)
       }}>Search</button>
       </div>
+      </form>
     </div>
   )
 }

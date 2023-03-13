@@ -6,7 +6,7 @@
 @import "open-props/buttons";
 
 html {
-  --brand-light: var(--orange-6);
+  --brand-light: var(--orange-7);
 
   --text-1-light: var(--gray-8);
   --text-2-light: var(--gray-7);
@@ -18,7 +18,7 @@ html {
 }
 
 html {
-  --brand-dark: var(--orange-3);
+  --brand-dark: var(--orange-4);
 
   --text-1-dark: var(--gray-1);
   --text-2-dark: var(--gray-3);

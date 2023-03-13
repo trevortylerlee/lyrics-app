@@ -1,6 +1,8 @@
-import styles from '@/styles/Home.module.css'
+import styles from '@/styles/Game.module.css'
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
+
+import Option from "@/components/Option"
 
 export default function Game() {
   const router = useRouter()
@@ -14,6 +16,20 @@ export default function Game() {
   const [choice2, setChoice2] = useState('')
   const [choice3, setChoice3] = useState('')
   const [choice4, setChoice4] = useState('')
+
+  const [isClicked1, setIsClicked1] = useState(false)
+  const [isClicked2, setIsClicked2] = useState(false)
+  const [isClicked3, setIsClicked3] = useState(false)
+  const [isClicked4, setIsClicked4] = useState(false)
+
+  const [line1, setLine1] = useState('')
+  const [line2, setLine2] = useState('')
+  const [line3, setLine3] = useState('')
+
+  const [score, setScore] = useState(0)
+  const [lives, setLives] = useState(3)
+  const [linesRevealed, setLinesRevealed] = useState(0)
+  const [questionOver, setQuestionOver] = useState(false)
 
   const { artistId } = router.query
 
@@ -66,21 +82,23 @@ export default function Game() {
 
       const correctNum = getRandomInt(0, 3)
       setCorrectTrack(songs[arr[correctNum]])
-
-      // for (let i = 0; i < arr.length; i++) {
-      //   // eslint-disable-next-line no-console
-      //   console.log(songs[arr[i]].track.track_name)
-      //   // eslint-disable-next-line no-console
-      //   console.log(songs[arr[i]].track.track_id)
-      // }
     }
   }, [songs])
+
+  useEffect(() => {
+    // Get lyrics for the random song
+
+    if (correctTrack !== '') {
+      getLyrics(correctTrack.track.track_id)
+    }
+
+  }, [correctTrack])
 
   async function getAlbums(artistId, page) {
     const response = await fetch(`/api/getAlbums?artistId=${artistId}&page=${page}`)
     const data = await response.json()
     const albums = data.result.message.body.album_list
-    console.log('data:', data)
+    // console.log('data:', data)
     return albums
   }
 
@@ -111,7 +129,7 @@ export default function Game() {
       }
     }
 
-    console.log(mainAlbums)
+    // console.log(mainAlbums)
     setAlbums(mainAlbums)
   }
 
@@ -130,24 +148,110 @@ export default function Game() {
     }
   }
 
+  async function getLyrics(trackId) {
+    const response = await fetch(`/api/getLyrics?trackId=${trackId}`)
+    const data = await response.json()
+    const lyrics = data.message.body.lyrics.lyrics_body
+    const lyricsArr = lyrics.split('\n')
+    // console.log('This is the lyrics array', lyricsArr)
+
+    setLine1(lyricsArr[0])
+    setLine2(lyricsArr[1])
+    setLine3(lyricsArr[2])
+  }
+
   function handleClick(e) {
     console.log('clicked', e.target.innerHTML)
-    console.log(correctTrack)
+    console.log(correctTrack.track.track_name)
 
     if (e.target.innerHTML === correctTrack.track.track_name) {
       console.log('correct')
+      // e.target.innerHTML = e.target.innerHTML + ' ✔'
+      // e.target.classList.add(`${styles.correct}`)
+      setScore(score => score + (3 - lives))
+      setQuestionOver(true)
     } else {
       console.log('incorrect')
+      // e.target.innerHTML = e.target.innerHTML + ' ✘'
+      // e.target.classList.add(`${styles.incorrect}`)
+      setLives(lives => lives - 1)
+      setQuestionOver(true)
     }
+  }
+
+  function nextLine() {
+    setLinesRevealed(linesRevealed => linesRevealed + 1 )
+  }
+
+  function nextQuestion() {
+    setLinesRevealed(0)
+    setQuestionOver(false)
+    setToggleNextAlbum(!toggleNextAlbum)
+  }
+
+  if (lives < 1) {
+    return (
+      <>
+        <h1>Game Over</h1>
+      </>
+    )
   }
 
   return (
     <>
       <main className={styles.main}>
-        {choice1 !== '' && <button onClick={(e) => {handleClick(e)}}>{choice1.track.track_name}</button>}
-        {choice2 !== '' && <button onClick={(e) => {handleClick(e)}}>{choice2.track.track_name}</button>}
-        {choice3 !== '' && <button onClick={(e) => {handleClick(e)}}>{choice3.track.track_name}</button>}
-        {choice4 !== '' && <button onClick={(e) => {handleClick(e)}}>{choice4.track.track_name}</button>}
+        <div className={styles.topBar}>
+          <p>{score} points</p>
+          <div className={styles.circleWrapper}>
+            {lives === 3 && <div className={styles.circle}></div>}
+            {lives >= 2 && <div className={styles.circle}></div>}
+            {lives >= 1 && <div className={styles.circle}></div>}
+          </div>
+        </div>
+        {!questionOver && <button className={styles.next} onClick={nextLine}>Reveal line</button>}
+        {questionOver && <button className={styles.next} onClick={nextQuestion}>Next question</button>}
+        <div>
+          <ul className={styles.lyrics}>
+            {line1 !== '' && <li className={styles.visible}>1: {line1}</li>}
+            {line2 !== '' && <li className={linesRevealed >= 1 ? `${styles.visible}` : `${styles.hidden}`}>2: {line2}</li>}
+            {line3 !== '' && <li className={linesRevealed >= 2 ? `${styles.visible}` : `${styles.hidden}`}>3: {line3}</li>}
+          </ul>
+        </div>
+        <div className={styles.buttonWrapper}>
+
+          {choice1 !== '' &&
+            <Option
+              label={choice1.track.track_name}
+              onClick={handleClick}
+              questionOver={questionOver}
+              correctTrack={correctTrack.track.track_name}
+            />  
+          }
+          {choice2 !== '' &&
+            <Option
+              label={choice2.track.track_name}
+              onClick={handleClick}
+              questionOver={questionOver}
+              correctTrack={correctTrack.track.track_name}
+            />  
+          }
+          {choice3 !== '' &&
+            <Option
+              label={choice3.track.track_name}
+              onClick={handleClick}
+              questionOver={questionOver}
+              correctTrack={correctTrack.track.track_name}
+            />  
+          }
+          {choice4 !== '' &&
+            <Option
+              label={choice4.track.track_name}
+              onClick={handleClick}
+              questionOver={questionOver}
+              correctTrack={correctTrack.track.track_name}
+            />  
+          }
+        </div>
       </main>
     </>
   )

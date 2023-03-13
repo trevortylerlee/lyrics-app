@@ -8,6 +8,11 @@
   padding: var(--size-4) 0;
 }
 
+.artistWrapper {
+  margin: 0;
+  line-height: 0;
+}
+
 @media (min-width: 768px) {
   .bestSellers {
     display: grid;
@@ -27,6 +32,10 @@
 
 .heroCopy {
   font-size: var(--font-size-fluid-3);
+  /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--gradient-14);
+  object-fit: cover; */
 }
 
 .secondaryCopy {
@@ -42,4 +51,11 @@
   background-color: var(--surface-2);
   padding: var(--size-3);
   border-radius: var(--radius-2);
+}
+
+.searchResult {
+  opacity: 0;
+    animation: var(--animation-slide-in-down), var(--animation-fade-in) forwards;
+    animation-delay: calc(var(--_delay) * 25ms);
+    animation-timing-function: var(--ease-squish-1);
 }

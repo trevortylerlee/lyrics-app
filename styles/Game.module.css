@@ -1,0 +1,77 @@
+.buttonWrapper {
+  display: grid;
+  gap: var(--size-4);
+}
+
+.buttonWrapper > button {
+  font-weight: var(--font-weight-4);
+}
+
+.lyrics {
+  padding: var(--size-4) 0;
+  margin: 0;
+}
+
+.lyrics > li {
+  list-style: none;
+  text-align: left;
+  font-size: var(--font-size-fluid-2);
+  font-weight: var(--font-weight-7);
+  line-height: 1.125;
+  margin-bottom: 2rem;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--size-4);
+}
+
+.circle {
+  width: var(--size-3);
+  height: var(--size-3);
+  background: var(--green-6);
+  border-radius: 50%;
+}
+
+.circleWrapper {
+  display: flex;
+  gap: var(--size-2);
+}
+
+.next {
+  width: 100%;
+  margin-bottom: 2rem;
+  font-size: var(--font-size-fluid-2);
+  background-image: var(--gradient-19);
+  color: black;
+}
+
+.visible {
+  opacity: 1;
+  animation: var(--animation-slide-in-down), var(--animation-fade-in) forwards;
+  animation-timing-function: var(--ease-squish-1);
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.option {
+  animation: var(--animation-fade-in), var(--animation-fade-in) forwards;
+}
+
+.correct {
+  outline: 2px solid var(--green-7);
+}
+
+.incorrect {
+  /* outline: 2px solid var(--red-6); */
+}
+
+@media (min-width: 768px) {
+  .buttonWrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
