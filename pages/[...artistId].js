@@ -6,6 +6,7 @@ import Option from "@/components/Option"
 
 export default function Game() {
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState(true)
   const [albums, setAlbums] = useState([])
   const [songs, setSongs] = useState([])
   const [trackIds, setTrackIds] = useState([])
@@ -158,6 +159,8 @@ export default function Game() {
     setLine1(lyricsArr[0])
     setLine2(lyricsArr[1])
     setLine3(lyricsArr[2])
+
+    setIsLoading(false)
   }
 
   function handleClick(e) {
@@ -187,6 +190,7 @@ export default function Game() {
     setLinesRevealed(0)
     setQuestionOver(false)
     setToggleNextAlbum(!toggleNextAlbum)
+    setIsLoading(true)
   }
 
   if (lives < 1) {
@@ -208,8 +212,12 @@ export default function Game() {
             {lives >= 1 && <div className={styles.circle}></div>}
           </div>
         </div>
+
         {!questionOver && <button className={styles.next} onClick={nextLine}>Reveal line</button>}
-        {questionOver && <button className={styles.next} onClick={nextQuestion}>Next question</button>}
+        {questionOver && <button className={styles.nextQuestion} onClick={nextQuestion}>Next question ➔</button>}
+
+        { isLoading ? <div className={styles.loader}></div> :
+        <>
         <div>
           <ul className={styles.lyrics}>
             {line1 !== '' && <li className={styles.visible}>1: {line1}</li>}
@@ -233,6 +241,7 @@ export default function Game() {
               onClick={handleClick}
               questionOver={questionOver}
               correctTrack={correctTrack.track.track_name}
+
             />  
           }
           {choice3 !== '' &&
@@ -241,6 +250,7 @@ export default function Game() {
               onClick={handleClick}
               questionOver={questionOver}
               correctTrack={correctTrack.track.track_name}
+
             />  
           }
           {choice4 !== '' &&
@@ -252,6 +262,7 @@ export default function Game() {
             />  
           }
         </div>
+        </>}
       </main>
     </>
   )

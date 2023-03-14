@@ -48,7 +48,7 @@ export default function Home() {
   //Handle the loading state
   if (!data) return <div>Loading...</div>;
 
-  console.log('Data', data)
+  // console.log('Data', data)
 
   return (
     <>
@@ -62,13 +62,14 @@ export default function Home() {
           searchArtists={searchArtists}
         />
 
-        {isLoading && <div className="loader">Loading...</div>}
+        {isLoading && <div className="loader"></div>}
 
         <div className={styles.searchResults}>
           {searchResults.map((artist, index) => {
             const { artist_name, artist_id } = artist.artist
 
             console.log(artist_name, artist_id)
+            console.log(artist.artist)
 
             return (
               <div key={artist_id} style={{'--_delay': index}} className={styles.searchResult}>
