@@ -1,11 +1,33 @@
 import React from "react"
 import styles from '@/styles/Home.module.css'
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useRouter } from "next/router"
 import useSWR from 'swr'
 
+import Modal from 'react-modal';
+
 import ArtistCard from "@/components/ArtistCard"
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 9999,
+    maxWidth: '640px',
+    minWidth: '300px',
+    padding: "1rem",
+    background: "#121212",
+    display: "flex",
+    flexDirection: "column",
+    gap: "1rem",
+    opacity: 0.95,
+  },
+};
 
 //Write a fetcher function to wrap the native fetch function and return the result of a call to url in json format
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -21,13 +43,20 @@ export default function Home() {
   //There are 3 possible states: (1) loading when data is null (2) ready when the data is returned (3) error when there was an error fetching the data
   const { data, error } = useSWR('/api/staticdata', fetcher);
 
-  // useEffect(() => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const mainRef = useRef(null);
 
-  //   if (search) {
-  //     searchArtists(search)
-  //   }
+  function openModal() {
+    setIsOpen(true);
+  }
 
-  // }, [search])
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  useEffect(() => {
+    Modal.setAppElement(mainRef.current);
+  }, []);
 
   async function searchArtists(search) {
     setIsLoading(true)
@@ -52,7 +81,33 @@ export default function Home() {
 
   return (
     <>
-      <main className={styles.main}>
+      <main className={styles.main} id="main" ref={mainRef} style={{
+        filter: modalIsOpen ? 'blur(5px)' : 'none',
+      }}>
+
+        <div>
+          <div style={{display: "flex", justifyContent: "space-between"}}>
+            <Link className={styles.homeButton} href="/">Home</Link>
+            <a href="#" onClick={openModal}>About</a>
+          </div>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStyles}
+            contentLabel="Example Modal"
+            appElement={mainRef.current}
+            overlayClassName={styles.overlay}
+            shouldCloseOnOverlayClick={true}
+          >
+            <h2 className={styles.modalHeader}>About</h2>
+            <p>Lyrics Guesser is a must-play game for hardcore fans. Choose your favourite artist to guess their song by their first 3 lines of lyrics!</p>
+            <p>Built with MusixMatchs API</p>
+            <p>
+              Made by <Link href="https://www.trevortylerlee.com/">Trevor Lee</Link>
+            </p>
+            <button className={styles.closeButton} onClick={closeModal}>close</button>
+          </Modal>
+        </div>
 
         <h1 className={styles.heroCopy}>Find your favorite artist and test your music knowledge!</h1>
 

@@ -193,10 +193,34 @@ export default function Game() {
     setIsLoading(true)
   }
 
+  async function handleSubmit() {
+
+  }
+
+  function endGame() {
+    let highScore = localStorage.getItem(`${artistId}`)
+
+    if (highScore === null || highScore === undefined) {
+      localStorage.setItem(`${artistId}`, score)
+      handleSubmit(artistId, score)
+    } else if (score > highScore) {
+      localStorage.setItem(`${artistId}`, score)
+      handleSubmit(artistId, score)
+    } else if (score < highScore) {
+      console.log('Your score was not high enough to beat the high score.')
+    } else {
+      console.log('Your score was the same as your previous high score.')
+    }
+  }
+
   if (lives < 1) {
+    console.log('Yo yo yo the game is over.')
+    endGame()
+
     return (
       <>
         <h1>Game Over</h1>
+        <p>You scored {score} points for {artistId}</p>
       </>
     )
   }

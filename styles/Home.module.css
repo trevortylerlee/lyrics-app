@@ -1,5 +1,4 @@
 .main {
-  padding-top: var(--size-10)
 }
 
 .bestSellers {
@@ -32,10 +31,7 @@
 
 .heroCopy {
   font-size: var(--font-size-fluid-3);
-  /* -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-image: var(--gradient-14);
-  object-fit: cover; */
+  padding-top: var(--size-10)
 }
 
 .secondaryCopy {
@@ -77,6 +73,20 @@
     -10px -10px 3px rgba(255, 255, 255, 0.1);
   transform-origin: 50%;
   animation: load 0.5s steps(8, end) infinite;
+}
+
+.overlay {
+  color: white;
+  animation: var(--animation-fade-in) forwards;
+}
+
+.closeButton {
+  background-color: white;
+  color: black;
+}
+
+.modalHeader {
+  color: white;
 }
 
 @keyframes load {
