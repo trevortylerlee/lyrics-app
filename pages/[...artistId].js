@@ -1,6 +1,7 @@
 import styles from '@/styles/Game.module.css'
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
+import axios from "axios"
 
 import Option from "@/components/Option"
 
@@ -33,6 +34,9 @@ export default function Game() {
   const [questionOver, setQuestionOver] = useState(false)
 
   const { artistId } = router.query
+  console.log(artistId)
+  const artistName = router.query.name
+  console.log(artistName)
 
   // Get albums
   useEffect(() => {
@@ -117,18 +121,18 @@ export default function Game() {
       }
     }
 
-    if (page1.length >= 99) {
-      const page2 = await getAlbums(artistId, 2)
+    // if (page1.length >= 99) {
+    //   const page2 = await getAlbums(artistId, 2)
 
-      if (page2) {
-        for (let i = 0; i < page2.length; i++) {
-          const albumRating = page2[i].album.album_rating
-          if (albumRating > 90) {
-            mainAlbums.push(page2[i])
-          }
-        }
-      }
-    }
+    //   if (page2) {
+    //     for (let i = 0; i < page2.length; i++) {
+    //       const albumRating = page2[i].album.album_rating
+    //       if (albumRating > 90) {
+    //         mainAlbums.push(page2[i])
+    //       }
+    //     }
+    //   }
+    // }
 
     // console.log(mainAlbums)
     setAlbums(mainAlbums)
@@ -171,7 +175,7 @@ export default function Game() {
       console.log('correct')
       // e.target.innerHTML = e.target.innerHTML + ' ✔'
       // e.target.classList.add(`${styles.correct}`)
-      setScore(score => score + (3 - lives))
+      setScore(score => score + (3 - linesRevealed))
       setQuestionOver(true)
     } else {
       console.log('incorrect')
@@ -193,8 +197,14 @@ export default function Game() {
     setIsLoading(true)
   }
 
-  async function handleSubmit() {
-
+  async function handleSubmit({artistId, score}) {
+    const { data } = await axios.post('/api/submit', {
+      artistId,
+      artistName,
+      score
+    })
+    console.log(data)
+    return data
   }
 
   function endGame() {
@@ -202,10 +212,10 @@ export default function Game() {
 
     if (highScore === null || highScore === undefined) {
       localStorage.setItem(`${artistId}`, score)
-      handleSubmit(artistId, score)
+      return (handleSubmit({artistId, score}))
     } else if (score > highScore) {
       localStorage.setItem(`${artistId}`, score)
-      handleSubmit(artistId, score)
+      return (handleSubmit({artistId, score}))
     } else if (score < highScore) {
       console.log('Your score was not high enough to beat the high score.')
     } else {
@@ -220,7 +230,7 @@ export default function Game() {
     return (
       <>
         <h1>Game Over</h1>
-        <p>You scored {score} points for {artistId}</p>
+        <p>You scored {score} points for {artistName}</p>
       </>
     )
   }

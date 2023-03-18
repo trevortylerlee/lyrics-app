@@ -128,7 +128,7 @@ export default function Home() {
 
             return (
               <div key={artist_id} style={{'--_delay': index}} className={styles.searchResult}>
-                <Link href={`/${artist_id}`} key={artist_id}>{artist_name}</Link>
+                <Link href={`/${artist_id}?name=${artist_name}`} key={artist_id}>{artist_name}</Link>
               </div>
             )
           }

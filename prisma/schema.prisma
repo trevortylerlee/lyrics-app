@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Artist {
+  id            Int       @id @default(autoincrement())
+  musixMatchId  Int       @unique
+  name          String
+  highScore     Int       @default(0)
+  totalScore    Int       @default(0)
+  updatedAt     DateTime  @updatedAt
+}
